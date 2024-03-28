@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function DetailsPage() {
   const navigate = useNavigate();
+  const [playerOneName, setPlayerOneName] = useState("Player 1");
+  const [playerTwoName, setPlayerTwoName] = useState("Player 2");
+
+  useEffect(() => {
+    localStorage.setItem("playerOneName", playerOneName);
+    localStorage.setItem("playerTwoName", playerTwoName);
+  }, [playerOneName, playerTwoName]);
+
   return (
     <div className="outer box-border w-screen h-screen bg-black pt-2">
       <div className="details box-border w-1/2 h-4/6 bg-white mx-auto mt-32 p-4 rounded-xl flex flex-col items-start justify-evenly">
@@ -10,7 +18,11 @@ function DetailsPage() {
           <label className="mt-1">Enter Player 1 Name</label>
           <input
             type="text"
-            className="pt-1 pb-1 px-4 mb-2 text-lg outline-none rounded-xl"
+            value={playerOneName}
+            onChange={(e) => {
+              setPlayerOneName(e.target.value);
+            }}
+            className="box-border w-2/3 pt-1 pb-1 px-4 mb-2 text-lg outline-none rounded-xl"
           />
         </div>
 
@@ -18,7 +30,11 @@ function DetailsPage() {
           <label className="mt-1">Enter Player 2 Name</label>
           <input
             type="text"
-            className="pt-1 pb-1 px-4 mb-2 text-lg outline-none rounded-xl"
+            value={playerTwoName}
+            onChange={(e) => {
+              setPlayerTwoName(e.target.value);
+            }}
+            className="box-border w-2/3 pt-1 pb-1 px-4 mb-2 text-lg outline-none rounded-xl"
           />
         </div>
 
