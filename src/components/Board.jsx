@@ -30,14 +30,18 @@ function Board() {
       [2, 4, 6],
     ];
 
-    return winLogic.some((item) => {
+    for (const item of winLogic) {
       const values = item.map((index) => intialValues[index]);
-      const marker = values[0];
-      const result = values.every(
-        (value) => value === marker && value !== "Enter"
-      );
-      return result;
-    });
+      if (values.every((value) => value !== "Enter" && value === values[0])) {
+        if(values[0]==="X"){
+          return "Player 1"
+        }
+        else{
+          return "Player 2"
+        }
+      }
+    }
+    return false;
   };
 
   const checkDraw = () => {
@@ -57,13 +61,14 @@ function Board() {
     <div className="boardContainer box-border w-1/2 h-3/5 bg-black mx-auto my-16  flex flex-col items-center">
       {isWinner ? (
         <div className="text-green-500 m-auto p-4 rounded-xl bg-gray-100">
-          <p className="text-center text-xl p-6">Hope u enjoyed the game.</p>
-          <p className="text-center text-3xl p-6">Thank You!!</p>
+          <p className="text-center text-3xl p-2">{isWinner} Wins</p>
+          <p className="text-center text-xl p-2">Hope u enjoyed the game.</p>
+          <p className="text-center text-3xl p-2">Thank You!!</p>
         </div>
       ) : isDraw ? (
         <div className="text-blue-500 m-auto p-4 rounded-xl bg-gray-100">
-          <p className="text-center text-2xl pt-6">Match Drawn.</p>
-          <p className="text-center text-3xl p-6">Thank You!!</p>
+          <p className="text-center text-2xl pt-2">Match Drawn.</p>
+          <p className="text-center text-3xl p-2">Thank You!!</p>
         </div>
       ) : (
         <>
