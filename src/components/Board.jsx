@@ -13,7 +13,6 @@ function Board() {
       copyInitialValues[index] = isXTurn ? "X" : 0;
       setIntialValues(copyInitialValues);
       setIsXTurn(!isXTurn);
-      isWinner = winner();
     } else {
       setError(true);
     }
@@ -41,14 +40,29 @@ function Board() {
     });
   };
 
+  const checkDraw = () => {
+    const allValuesEntered = intialValues.every((value) => value !== "Enter");
+    if (allValuesEntered === true && isWinner === false) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   let isWinner = winner();
-  console.log(winner());
+
+  let isDraw = checkDraw();
 
   return (
     <div className="boardContainer box-border w-1/2 h-3/5 bg-black mx-auto my-16  flex flex-col items-center">
       {isWinner ? (
-        <div className="text-green-500 text-2xl align-middle m-auto p-4 rounded-xl bg-gray-100">
-          <p>Hope u enjoyed the game.</p>
+        <div className="text-green-500 m-auto p-4 rounded-xl bg-gray-100">
+          <p className="text-center text-xl p-6">Hope u enjoyed the game.</p>
+          <p className="text-center text-3xl p-6">Thank You!!</p>
+        </div>
+      ) : isDraw ? (
+        <div className="text-blue-500 m-auto p-4 rounded-xl bg-gray-100">
+          <p className="text-center text-2xl pt-6">Match Drawn.</p>
           <p className="text-center text-3xl p-6">Thank You!!</p>
         </div>
       ) : (
