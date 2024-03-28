@@ -1,9 +1,12 @@
+import React,{useState} from "react";
+import Board from "./components/Board";
+
 function App() {
+  const [intialValues, setIntialValues] = useState(Array(9).fill('Enter'))
+
   return (
-    <div className="App">
-      <h1 className="text-3xl font-bold underline bg-orange-500">
-        tictactoe game building
-      </h1>
+    <div className="gameContainer box-border w-screen h-screen">
+      <Board  intialValues={intialValues}/>
     </div>
   );
 }
