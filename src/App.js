@@ -1,12 +1,16 @@
 import React from "react";
-import Board from "./components/Board";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import GamePage from "./components/GamePage";
+import DetailsPage from "./components/DetailsPage";
 
 function App() {
-  
   return (
-    <div className="gameContainer box-border w-screen h-screen">
-      <Board/>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<DetailsPage />} />
+        <Route path="/game" element={<GamePage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
