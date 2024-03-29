@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Square from "./Square";
-import { useNavigate } from "react-router-dom";
 import PlayerComponent from "./PlayerComponent";
 import TimeComponent from "./TimeComponent";
 
@@ -68,7 +67,7 @@ function Board({ playerOneName, playerTwoName }) {
           setIntialValues={setIntialValues}
         />
 
-        <TimeComponent />
+        <TimeComponent/>
       </div>
       {isWinner ? (
         <div className="text-green-500 m-auto p-4 rounded-xl bg-gray-100">

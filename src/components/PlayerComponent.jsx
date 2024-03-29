@@ -18,7 +18,6 @@ function PlayerComponent({ playerOneName, playerTwoName, setIntialValues }) {
           className="reset box-border bg-green-400 px-6 py-1 mt-2 rounded-xl text-lg text-center hover:ring-2 ring-offset-2 ring-blue-600"
           onClick={() => {
             navigate("/");
-            localStorage.removeItem("restart");
           }}
         >
           Reset
