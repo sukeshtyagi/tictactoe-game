@@ -3,21 +3,13 @@ import React, { useState, useEffect } from "react";
 function Square({ value, clickFunction, isXTurn }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
-  const [restart, setRestart] = useState(false);
+  let [restart, setRestart] = useState(false);
 
+  restart = localStorage.getItem("restart");
   useEffect(() => {
     if (restart) {
       setIsClicked(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    const restartActivator = localStorage.getItem("restart");
-    console.log(restartActivator);
-
-    if (restartActivator) {
-      setIsClicked(false);
-      console.log("if executed");
+      localStorage.removeItem("restart");
     }
   }, [restart]);
 
