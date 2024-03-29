@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Square from "./Square";
 import { useNavigate } from "react-router-dom";
+import PlayerComponent from "./PlayerComponent";
+import TimeComponent from "./TimeComponent";
 
 function Board({ playerOneName, playerTwoName }) {
   const [intialValues, setIntialValues] = useState(Array(9).fill("Enter"));
   const [isXTurn, setIsXTurn] = useState(true);
   const [error, setError] = useState(false);
-  const [restart, setRestart] = useState(false);
-  const navigate = useNavigate();
 
   const handleClick = (index) => {
     if (intialValues[index] === "Enter") {
@@ -61,34 +61,14 @@ function Board({ playerOneName, playerTwoName }) {
 
   return (
     <div className="boardContainer box-border w-1/2 h-fit bg-black mx-auto flex-col items-center justify-center  p-2">
-      <div className="details box-border w-1/2 bg-slate-100 flex flex-col items-center justify-center gap-2 mx-auto my-4 py-2">
-        <p className="one box-border w-fit text-center text-black bg-green-400 p-2 flex justify-center gap-2 items-center">
-          <span className="text-xl font-normal">{playerOneName}</span>{" "}
-          <span>(X)</span>
-        </p>
-        <p className="two box-border w-fit text-center text-black bg-green-400 p-2 flex justify-center gap-2 items-center">
-          <span className="text-xl font-normal">{playerTwoName}</span>{" "}
-          <span>(O)</span>
-        </p>
-        <div className="buttonDiv  box-border w-full flex items-center justify-center gap-4">
-          <button
-            className="reset box-border bg-green-400 px-6 py-1 mt-2 rounded-xl text-lg text-center hover:ring-2 ring-offset-2 ring-blue-600"
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            Reset
-          </button>
-          <button
-            className="restart box-border bg-green-400 px-6 py-1 mt-2 rounded-xl text-lg text-center hover:ring-2 ring-offset-2 ring-blue-600"
-            onClick={() => {
-              setIntialValues(Array(9).fill("Enter"));
-              setRestart(true);
-            }}
-          >
-            Restart
-          </button>
-        </div>
+      <div className="topDiv box-border w-full flex justify-center gap-6 items-center p-1 ">
+        <PlayerComponent
+          playerOneName={playerOneName}
+          playerTwoName={playerTwoName}
+          setIntialValues={setIntialValues}
+        />
+
+        <TimeComponent />
       </div>
       {isWinner ? (
         <div className="text-green-500 m-auto p-4 rounded-xl bg-gray-100">
@@ -110,7 +90,6 @@ function Board({ playerOneName, playerTwoName }) {
                 clickFunction={() => {
                   handleClick(0);
                 }}
-                restart={restart}
                 isXTurn={isXTurn}
               />
               <Square
@@ -118,7 +97,6 @@ function Board({ playerOneName, playerTwoName }) {
                 clickFunction={() => {
                   handleClick(1);
                 }}
-                restart={restart}
                 isXTurn={isXTurn}
               />
               <Square
@@ -126,7 +104,6 @@ function Board({ playerOneName, playerTwoName }) {
                 clickFunction={() => {
                   handleClick(2);
                 }}
-                restart={restart}
                 isXTurn={isXTurn}
               />
             </div>
@@ -136,7 +113,6 @@ function Board({ playerOneName, playerTwoName }) {
                 clickFunction={() => {
                   handleClick(3);
                 }}
-                restart={restart}
                 isXTurn={isXTurn}
               />
               <Square
@@ -144,7 +120,6 @@ function Board({ playerOneName, playerTwoName }) {
                 clickFunction={() => {
                   handleClick(4);
                 }}
-                restart={restart}
                 isXTurn={isXTurn}
               />
               <Square
@@ -152,7 +127,6 @@ function Board({ playerOneName, playerTwoName }) {
                 clickFunction={() => {
                   handleClick(5);
                 }}
-                restart={restart}
                 isXTurn={isXTurn}
               />
             </div>
@@ -162,7 +136,6 @@ function Board({ playerOneName, playerTwoName }) {
                 clickFunction={() => {
                   handleClick(6);
                 }}
-                restart={restart}
                 isXTurn={isXTurn}
               />
               <Square
@@ -170,7 +143,6 @@ function Board({ playerOneName, playerTwoName }) {
                 clickFunction={() => {
                   handleClick(7);
                 }}
-                restart={restart}
                 isXTurn={isXTurn}
               />
               <Square
@@ -178,7 +150,6 @@ function Board({ playerOneName, playerTwoName }) {
                 clickFunction={() => {
                   handleClick(8);
                 }}
-                restart={restart}
                 isXTurn={isXTurn}
               />
             </div>
