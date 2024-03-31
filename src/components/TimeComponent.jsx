@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react";
 
-function TimeComponent() {
+function TimeComponent({ isWinner, isDraw }) {
   const [currentTime, setCurrentTime] = useState("00:00:00");
   const restart = localStorage.getItem("restart");
 
   useEffect(() => {
     let interval;
-
     if (restart) {
       setCurrentTime("00:00:00");
     } else {
+      console.log(isWinner);
+      if (isWinner || isDraw) {
+        console.log("if executed");
+        return;
+      }
       interval = setInterval(() => {
         setCurrentTime((prevTime) => {
           const [hours, minutes, seconds] = prevTime.split(":").map(Number);
@@ -32,7 +36,7 @@ function TimeComponent() {
     }
 
     return () => clearInterval(interval);
-  }, [restart]);
+  }, [restart, isWinner,isDraw]);
 
   return (
     <div className="timeDiv box-border bg-slate-100 text-black px-6 py-2 bg-slate-100 rounded-xl flex flex-col gap-2">

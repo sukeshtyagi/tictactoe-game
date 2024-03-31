@@ -67,16 +67,16 @@ function Board({ playerOneName, playerTwoName }) {
           setIntialValues={setIntialValues}
         />
 
-        <TimeComponent />
+        <TimeComponent isWinner={isWinner} isDraw={isDraw}/>
       </div>
       {isWinner ? (
-        <div className="text-green-500 m-auto p-4 rounded-xl bg-gray-100">
+        <div className="text-green-500 m-auto mt-6 p-4 rounded-xl bg-gray-100">
           <p className="text-center text-3xl p-2">{isWinner} Wins</p>
           <p className="text-center text-xl p-2">Hope u enjoyed the game.</p>
           <p className="text-center text-3xl p-2">Thank You!!</p>
         </div>
       ) : isDraw ? (
-        <div className="text-blue-500 m-auto p-4 rounded-xl bg-gray-100">
+        <div className="text-blue-500 m-auto mt-6 p-4 rounded-xl bg-gray-100">
           <p className="text-center text-2xl pt-2">Match Drawn.</p>
           <p className="text-center text-3xl p-2">Thank You!!</p>
         </div>
