@@ -60,7 +60,7 @@ function Board({ playerOneName, playerTwoName }) {
 
   return (
     <div className="boardContainer box-border w-11/12 sm:w-1/2 h-fit bg-black mx-auto flex-col items-center justify-center  p-2">
-      <div className="topDiv box-border w-full flex justify-center gap-6 items-center p-1 ">
+      <div className="topDiv box-border w-full flex flex-col lg:flex-row justify-center gap-6 items-center p-1 ">
         <PlayerComponent
           playerOneName={playerOneName}
           playerTwoName={playerTwoName}
