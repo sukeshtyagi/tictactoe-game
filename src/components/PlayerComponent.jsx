@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 function PlayerComponent({ playerOneName, playerTwoName, setIntialValues }) {
   const navigate = useNavigate();
   return (
-    <div className="details box-border w-1/2 bg-slate-100 flex flex-col items-center justify-center gap-2 my-4 py-2 rounded-xl">
+    <div className="details box-border w-full sm:w-1/2 bg-slate-100 flex flex-col items-center justify-center gap-2 my-4 py-2 rounded-xl">
       <p className="one box-border w-fit text-center text-black bg-green-400 p-2 flex justify-center gap-2 items-center rounded-lg">
         <span className="text-xl font-normal">{playerOneName}</span>{" "}
         <span>(X)</span>

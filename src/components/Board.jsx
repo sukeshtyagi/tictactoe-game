@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Square from "./Square";
 import PlayerComponent from "./PlayerComponent";
 import TimeComponent from "./TimeComponent";
@@ -59,7 +59,7 @@ function Board({ playerOneName, playerTwoName }) {
   let isDraw = checkDraw();
 
   return (
-    <div className="boardContainer box-border w-1/2 h-fit bg-black mx-auto flex-col items-center justify-center  p-2">
+    <div className="boardContainer box-border w-11/12 sm:w-1/2 h-fit bg-black mx-auto flex-col items-center justify-center  p-2">
       <div className="topDiv box-border w-full flex justify-center gap-6 items-center p-1 ">
         <PlayerComponent
           playerOneName={playerOneName}
@@ -67,7 +67,7 @@ function Board({ playerOneName, playerTwoName }) {
           setIntialValues={setIntialValues}
         />
 
-        <TimeComponent/>
+        <TimeComponent />
       </div>
       {isWinner ? (
         <div className="text-green-500 m-auto p-4 rounded-xl bg-gray-100">
